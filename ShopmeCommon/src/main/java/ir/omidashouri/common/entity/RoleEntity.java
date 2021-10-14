@@ -1,8 +1,6 @@
 package ir.omidashouri.common.entity;
 
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
