@@ -1,10 +1,13 @@
 package ir.omidashouri.common.entity;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "tbl_roles",schema = "shopme_sc")
 public class RoleEntity implements Serializable {
@@ -18,4 +21,13 @@ public class RoleEntity implements Serializable {
 
     @Column(name = "description", nullable = false, length = 150)
     private String description;
+
+    public RoleEntity(String name) {
+        this.name = name;
+    }
+
+    public RoleEntity(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

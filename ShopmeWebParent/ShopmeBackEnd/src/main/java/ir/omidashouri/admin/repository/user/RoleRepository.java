@@ -1,4 +1,4 @@
-package ir.omidashouri.admin.repositories.user;
+package ir.omidashouri.admin.repository.user;
 
 
 import ir.omidashouri.common.entity.RoleEntity;

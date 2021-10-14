@@ -1,6 +1,7 @@
 package ir.omidashouri.common.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "tbl_brands",schema = "shopme_sc")
 public class BrandEntity {

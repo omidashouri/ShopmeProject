@@ -3,9 +3,8 @@ package ir.omidashouri.admin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EntityScan("ir.omidashouri.common.entity") // we can also use: @EnableJpaRepositories("ir.omidashouri.common.entity")
+@EntityScan({"ir.omidashouri.common.entity"}) // we can also use: @EnableJpaRepositories("ir.omidashouri.common.entity")
 @SpringBootApplication
 public class ShopmeBackEndApplication {
 
