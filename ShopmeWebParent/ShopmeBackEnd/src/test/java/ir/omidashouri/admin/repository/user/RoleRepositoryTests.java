@@ -1,5 +1,6 @@
 package ir.omidashouri.admin.repository.user;
 
+import ir.omidashouri.admin.repository.RoleRepository;
 import ir.omidashouri.common.entity.RoleEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) //run test in real database not h2 database
-@Rollback(value = false)
+@Rollback(value = true)
 public class RoleRepositoryTests {
 
     @Autowired

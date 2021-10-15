@@ -22,6 +22,11 @@ public class RoleEntity implements Serializable {
     @Column(name = "description", nullable = false, length = 150)
     private String description;
 
+
+    public RoleEntity(Integer id) {
+        this.id = id;
+    }
+
     public RoleEntity(String name) {
         this.name = name;
     }
@@ -29,5 +34,10 @@ public class RoleEntity implements Serializable {
     public RoleEntity(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
