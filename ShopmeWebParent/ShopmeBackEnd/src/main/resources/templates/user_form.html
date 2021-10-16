@@ -67,9 +67,10 @@
         <h2>Manage Users | Create New User</h2>
     </div>
 
-    <form method="post" style="max-width: 700px; margin: 0 auto" th:action="@{/users/save}" th:object="${user}">
+    <form method="post" style="max-width: 700px; margin: 0 auto" th:action="@{/users/save}" th:object="${user}"
+          onsubmit="return checkEmailUnique(this)">
         <div class="border birder-secondary rounded p-3">
-<!--            m-2 mean margin equal 2-->
+            <!--            m-2 mean margin equal 2-->
             <div class="row">
                 <!--                sm mean responsive in small screen, 4 mean width of column is 4-->
                 <label class="col-sm-4 col-form-label">Email:</label>
@@ -129,6 +130,24 @@
         </div>
     </form>
 
+    <div class="modal fade" id="modalDialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Warning</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="text-center">
         <p>Shopme Control Panel - Copyright &copy; Shopme</p>
@@ -139,11 +158,45 @@
 <script th:src="@{/webjars/bootstrap/5.1.2/js/bootstrap.min.js}" type="text/javascript"></script>
 <script th:src="@{/webjars/bootstrap/5.1.2/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#buttonCancel").on("click", function() {
+    $(document).ready(function () {
+        $("#buttonCancel").on("click", function () {
             window.location = "[[@{/users}]]";
         });
     });
+
+    function checkEmailUnique(form) {
+        url = "[[@{/users/check_email}]]";
+        userEmail = $("#email").val();
+        // _csrf is hidden field activated when adding spring security, we should send it by request
+        csrf = $("input[name='_csrf']").val();
+        params = {email: userEmail, _csrf: csrf};
+
+        $.post(url, params, function (response) {
+            if (response == "OK") {
+                form.submit();
+            } else if (response == "Duplicated") {
+                showModalDialog("Warning", "There is another user having the email " + userEmail);
+            } else {
+                showModalDialog("Error", "Unknown response from server ");
+            }
+            //    fail for when cannot connect tot the server
+        }).fail(function () {
+            showModalDialog("Error", "Could not connet to the server ");
+        });
+        return false;
+    }
+
+    function showModalDialog(title, message) {
+        $("#modalTitle").text(title);
+        $("#modalBody").text(message);
+        $("#modalDialog").modal('show');
+    }
+
+    function closeDialog(element) {
+        var modalID = element.parentNode.parentNode.getAttribute("id");
+        var modal = document.getElementById(modalID);
+        modal.style.display = "none";
+    }
 </script>
 </body>
 </html>

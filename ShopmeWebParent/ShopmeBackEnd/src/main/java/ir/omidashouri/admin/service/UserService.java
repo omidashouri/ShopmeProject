@@ -13,4 +13,6 @@ public interface UserService {
     List<RoleEntity> listRoles();
 
     UserEntity save(UserEntity user);
+
+    boolean isEmailUnique(String email);
 }

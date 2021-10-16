@@ -61,4 +61,17 @@ class UserRepositoryTest {
         assertThat(savedUser.isEnabled()).isTrue();
     }
 
+    @Test
+    public void testGetUserByEmail(){
+        String email = "omidashouri@gmail.com";
+        UserEntity user =  userRepository.getUserEntityByEmail(email);
+        assertThat(user).isNotNull();
+    }
+
+    @Test
+    void isEmailUnique() {
+        UserEntity userByEmail = userRepository.getUserEntityByEmail("omidashouri@gmail.com");
+        assertThat(userByEmail).isNotNull();
+    }
+
 }
