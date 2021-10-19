@@ -2,23 +2,26 @@
             font-size: 1.4em;
             line-height: 1.4;
         }
-        
+
+        /* apply to the element which has id="output" */
         #output {
             text-align: center;
             font-size: 36px;
             color: red;
         }
-        
+
+        /* update all the paragraph */
         p {
             background-color: red;
             color: aquamarine;
         }
-        
+
+        /* apply all the elements which have class="one" */
         .one {
             color: aqua;
             background-color: black;
         }
-        
+
         .sty1 {
             padding: 10px;
             border: 2px solid blue;
