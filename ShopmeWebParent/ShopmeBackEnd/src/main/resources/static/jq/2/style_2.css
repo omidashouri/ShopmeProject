@@ -11,16 +11,16 @@
         }
 
         /* update all the paragraph */
-        p {
-            background-color: red;
-            color: aquamarine;
-        }
+        /*        p {
+                    background-color: red;
+                    color: aquamarine;
+                }*/
 
         /* apply all the elements which have class="one" */
-        .one {
-            color: aqua;
-            background-color: black;
-        }
+        /*        .one {
+                    color: aqua;
+                    background-color: black;
+                }*/
 
         .sty1 {
             padding: 10px;

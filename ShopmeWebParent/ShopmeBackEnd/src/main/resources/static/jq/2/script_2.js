@@ -38,9 +38,40 @@ $(document).ready(function() {
             $(this).prepend("PREPEND");
         })*/
 
-    $("li").each(function (index, event) {
-        console.log(index);
-        console.log(event);
+    /*    $("li").each(function (index, event) {
+            console.log(index);
+            console.log(event);
+        });*/
+
+
+    /*    $('li').click(function(event){
+            console.log('clicked',$(this).text());
+        });*/
+
+    /*    $("li").on("click",function(event){
+            $(this).append(" x ");
+        });*/
+
+    /*    $("#somebutton").click(function(){
+           $("#sidelist").append("<li>NEW</li>");
+        });*/
+
+    /*$("#sidemenu").on("click","li",function(event){
+        this.append(" * ")
+    });*/
+
+    /*$("#sidemenu").on("click mouseover","li",function(event){
+        this.append(" * ")
+    });*/
+
+    /*$("#mybox").on("mouseover",function(event){
+       $(this).append(" x ");
+    });*/
+
+    $("#mybox").mouseover(function (event) {
+        $(this).append(" x ");
+    }).mouseout(function (event) {
+        $(this).text("mouse out");
     });
 
 });
