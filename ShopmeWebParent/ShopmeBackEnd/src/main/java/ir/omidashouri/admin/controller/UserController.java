@@ -21,15 +21,17 @@ public class UserController {
     private final UserService userService;
 
 
+//    http://localhost:8080/ShopmeAdmin/users
+
     @GetMapping("/users")
-    public String getUsers(Model model){
+    public String getUsers(Model model) {
         List<UserEntity> users = userService.listAll();
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
         return "users";
     }
 
     @GetMapping("/users/new")
-    public String createNewUser(Model model){
+    public String createNewUser(Model model) {
         List<RoleEntity> listRoles = userService.listRoles();
         model.addAttribute("listRoles",listRoles);
 
@@ -63,6 +65,19 @@ public class UserController {
             redirectAttributes.addFlashAttribute("message", exception.getMessage());
             return "redirect:/users";
         }
+    }
+
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable(name = "id") Integer id,
+                             Model model, RedirectAttributes redirectAttributes) {
+        try {
+            userService.delete(id);
+            redirectAttributes.addFlashAttribute("message",
+                    "The user ID " + id + " has been deleted successfully");
+        } catch (UserNotFoundException exception) {
+            redirectAttributes.addFlashAttribute("message", exception.getMessage());
+        }
+        return "redirect:/users";
     }
 
 }

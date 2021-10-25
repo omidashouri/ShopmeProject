@@ -64,7 +64,7 @@ class UserRepositoryTest {
     @Test
     public void testGetUserByEmail(){
         String email = "omidashouri@gmail.com";
-        UserEntity user =  userRepository.getUserEntityByEmail(email);
+        UserEntity user = userRepository.getUserEntityByEmail(email);
         assertThat(user).isNotNull();
     }
 
@@ -72,6 +72,14 @@ class UserRepositoryTest {
     void isEmailUnique() {
         UserEntity userByEmail = userRepository.getUserEntityByEmail("omidashouri@gmail.com");
         assertThat(userByEmail).isNotNull();
+    }
+
+    @Test
+    void testCountById() {
+        Integer id = 1;
+        Long countById = userRepository.countById(id);
+
+        assertThat(countById).isNotNull().isGreaterThan(0);
     }
 
 }
