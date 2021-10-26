@@ -20,6 +20,7 @@
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         var ajaxrequest;
         var username = document.getElementById("username").value;
+        // for multiple parameter: "name=" + username +"&lastName="+lastName;
         var params = "name=" + username;
         var url = "http://localhost:8080/ShopmeAdmin/ajx/checkName";
         if (window.XMLHttpRequest) {
@@ -27,8 +28,13 @@
         } else {
             ajaxrequest = new ActiveXObject("Microsoft.XMLHTTP"); /// Older Browsers
         }
+        // because we have true: we can use this function here, this is asynchronous.
+        // otherwise use it after  'ajaxrequest.send' method
+        // when readystate change then this function execute
         ajaxrequest.onreadystatechange = function () {
             // console.log(ajaxrequest);
+
+            // 4 mean it is completed & 200 mean it is successful
             if (ajaxrequest.readyState == 4 && ajaxrequest.status == 200) {
                 document.getElementById("result").innerHTML = ajaxrequest.responseText;
             }
@@ -37,6 +43,8 @@
         ajaxrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         ajaxrequest.setRequestHeader("X-CSRF-TOKEN", csrf_token);
         ajaxrequest.send(params);
+
+        //    for Get: ajaxrequest.open("GET", url+"?name="+username, true);
     }
 
 </script>
