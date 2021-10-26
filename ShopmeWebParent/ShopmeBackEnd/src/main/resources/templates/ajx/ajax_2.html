@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta name="csrf-token" th:content="${_csrf.token}"/>-->
+    <title>Ajax Two</title>
+
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.2/css/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.2/css/bootstrap-grid.min.css}" type="text/css"/>
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.2/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.2/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="two">Ajax Two</div>
+<div id='output'></div>
+
+<script type="text/javascript">
+
+    page_data();
+
+    function page_data() {
+        // var csrf_token = $('meta[name="csrf-token"]').attr('content');
+        var ajax;
+        var output = document.getElementById("output");
+        var urlJson = "http://localhost:8080/ShopmeAdmin/ajx/jsondata";
+
+        if (window.XMLHttpRequest) {
+            ajax = new XMLHttpRequest();
+        } else {
+            ajax = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        ajax.open("GET", urlJson, true);
+        ajax.setRequestHeader("Content-type", "application/json", true);
+        // ajaxrequest.setRequestHeader("X-CSRF-TOKEN", csrf_token);
+
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var data = JSON.parse(ajax.responseText);
+                output.innerHTML = "";
+                // console.log(data);
+                //console.log(data.quizcontent);
+                //console.log(data.name);
+
+                for (var obj in data.quizcontent) {
+                    output.innerHTML += "<div >"
+                    output.innerHTML += "<h2>" + data.quizcontent[obj].question + "</h2>";
+                    console.log(data.quizcontent[obj].answers);
+                    var correct_answer = data.quizcontent[obj].correct;
+                    var start_count = 0;
+                    var got_right = 0;
+                    for (var answers in data.quizcontent[obj].answers) {
+                        //console.log(answers);
+                        start_count++;
+                        if (correct_answer == start_count) {
+                            got_right = 1;
+                        } else {
+                            got_right = 0;
+                        }
+                        output.innerHTML += "<button type='button' class='btn btn-default answers' onclick='myAnswer(" + got_right + ")' >" + data.quizcontent[obj].answers[answers] + "</button>";
+                    }
+                    output.innerHTML += "</div>";
+                }
+
+            }
+        }
+        ajax.send(null);
+        output.innerHTML = "finding...";
+    }
+
+</script>
+
+<!--<script src="../ajx/ajx_1.js"></script>-->
+</body>
+</html>

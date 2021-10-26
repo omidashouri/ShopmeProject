@@ -13,10 +13,18 @@ import java.util.List;
 public class AjaxController {
 
 
-//    http://localhost:8080/ShopmeAdmin/ajx/1
+    //    http://localhost:8080/ShopmeAdmin/ajx/2
+    @GetMapping("/ajx/2")
+    public String ajax2Page() {
+        return "ajx/ajax_2";
+    }
 
+
+//    ---------------------------------------------------------
+
+    //    http://localhost:8080/ShopmeAdmin/ajx/1
     @GetMapping("/ajx/1")
-    public String viewHomePage() {
+    public String ajax1Page() {
         return "ajx/ajax_1";
     }
 
