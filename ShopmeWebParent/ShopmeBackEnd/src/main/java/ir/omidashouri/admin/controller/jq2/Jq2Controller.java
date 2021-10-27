@@ -13,4 +13,10 @@ public class Jq2Controller {
     public String ajax1Page() {
         return "jq2/jq2_1";
     }
+
+    //    http://localhost:8080/ShopmeAdmin/jq2/92
+    @GetMapping("/92")
+    public String ajax92Page() {
+        return "jq2/jq2_92";
+    }
 }
