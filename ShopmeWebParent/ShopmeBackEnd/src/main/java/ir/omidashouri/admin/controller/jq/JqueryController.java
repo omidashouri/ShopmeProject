@@ -1,4 +1,4 @@
-package ir.omidashouri.admin.controller.jquery;
+package ir.omidashouri.admin.controller.jq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

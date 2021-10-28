@@ -19,7 +19,7 @@ $(document).ready(function () {
         if ($(this).hasClass("btn-danger")) {
 
             $.post("http://localhost:8080/ShopmeAdmin/jq/41?name=omidashouri" ,function (data, reponse, xhr) {
-                // xhr.setRequestHeader("X-CSRFToken", "5eeae26f-97f7-4d08-b4e8-121a694cf0cb");
+                // xhr.setRequestHeader("X-CSRF-Token", "5eeae26f-97f7-4d08-b4e8-121a694cf0cb");
                 console.log(xhr);
             })
         }
