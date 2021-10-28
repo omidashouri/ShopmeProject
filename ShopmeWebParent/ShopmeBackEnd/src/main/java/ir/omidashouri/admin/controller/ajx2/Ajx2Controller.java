@@ -29,4 +29,11 @@ public class Ajx2Controller {
     }
 
 
+    //    http://localhost:8080/ShopmeAdmin/ajx2/4
+    @GetMapping("/4")
+    public String ajax4Page() {
+        return "ajx2/ajx2_4";
+    }
+
+
 }
