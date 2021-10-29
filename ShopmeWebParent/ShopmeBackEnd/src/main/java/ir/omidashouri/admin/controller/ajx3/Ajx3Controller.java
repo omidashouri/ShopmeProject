@@ -43,4 +43,43 @@ public class Ajx3Controller {
     }
 
 
+    //    http://localhost:8080/ShopmeAdmin/ajx3/6
+    @GetMapping("/6")
+    public String ajax6Page() {
+        return "ajx3/ajx3_6";
+    }
+
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/7
+    @GetMapping("/7")
+    public String ajax7Page() {
+        return "ajx3/ajx3_7";
+    }
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/8
+    @GetMapping("/8")
+    public String ajax8Page() {
+        return "ajx3/ajx3_8";
+    }
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/9
+    @GetMapping("/9")
+    public String ajax9Page() {
+        return "ajx3/ajx3_9";
+    }
+
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/10
+    @GetMapping("/10")
+    public String ajax10Page() {
+        return "ajx3/ajx3_10";
+    }
+
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/11
+    @GetMapping("/11")
+    public String ajax11Page() {
+        return "ajx3/ajx3_11";
+    }
+
 }
