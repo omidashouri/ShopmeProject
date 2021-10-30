@@ -1,4 +1,4 @@
-const div = document.createElement("div");
+ const div = document.createElement("div");
 div.innerHTML = "click me";
 document.body.append(div);
 div.addEventListener('click',output);

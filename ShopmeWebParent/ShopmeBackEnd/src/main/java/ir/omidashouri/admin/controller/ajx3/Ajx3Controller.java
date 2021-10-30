@@ -82,4 +82,11 @@ public class Ajx3Controller {
         return "ajx3/ajx3_11";
     }
 
+
+    //    http://localhost:8080/ShopmeAdmin/ajx3/12
+    @GetMapping("/12")
+    public String ajax12Page() {
+        return "ajx3/ajx3_12";
+    }
+
 }
