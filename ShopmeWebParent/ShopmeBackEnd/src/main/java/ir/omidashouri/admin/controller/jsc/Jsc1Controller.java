@@ -21,14 +21,14 @@ public class Jsc1Controller {
         return "jsc1/jsc1_2";
     }
 
-/*
+
     //    http://localhost:8080/ShopmeAdmin/jsc1/3
     @GetMapping("/3")
     public String ajax3Page() {
         return "jsc1/jsc1_3";
     }
 
-
+/*
      //    http://localhost:8080/ShopmeAdmin/jsc1/4
     @GetMapping("/4")
     public String ajax4Page() {
