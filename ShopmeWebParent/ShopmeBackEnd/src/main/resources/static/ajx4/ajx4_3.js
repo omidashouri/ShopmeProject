@@ -32,12 +32,6 @@ function requestError(){
     console.log('oops, i did it again');
 }
 
-
-function requestError() {
-    console.log('this id Errrrrrrrrrrrrrror');
-}
-
-
 let url = "https://randomuser.me/api";
 let method = "GET";
 

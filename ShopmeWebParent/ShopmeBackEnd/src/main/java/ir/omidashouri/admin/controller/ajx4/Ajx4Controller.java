@@ -29,7 +29,7 @@ public class Ajx4Controller {
     }
 
 
-/*     //    http://localhost:8080/ShopmeAdmin/ajx4/4
+     //    http://localhost:8080/ShopmeAdmin/ajx4/4
     @GetMapping("/4")
     public String ajax4Page() {
         return "ajx4/ajx4_4";
@@ -50,7 +50,7 @@ public class Ajx4Controller {
     }
 
 
-    //    http://localhost:8080/ShopmeAdmin/ajx4/7
+  /*   //    http://localhost:8080/ShopmeAdmin/ajx4/7
     @GetMapping("/7")
     public String ajax7Page() {
         return "ajx4/ajx4_7";
