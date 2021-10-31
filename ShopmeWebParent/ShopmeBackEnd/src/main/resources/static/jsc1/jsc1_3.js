@@ -25,13 +25,27 @@ function fetchAll(urlServ, planets) {
             })
             //separate name and films from json and ...
             .then(function (data) {
-                //... fetch all the data and save in 'planets'
-                planets = data.results.map(function (item) {
-                    console.log('item >> ', item);
-                    return {name: item.name, films: item.films};
-                })
-                //return back all the data
-                resolve(planets);
+
+                //merge new page of data to the old data
+                planets = planets.concat(data.results);
+                console.log('planets >> ', planets);
+
+                //if data has next
+                if (data.next) {
+
+                    console.log('next urlServ data' + data.next);
+                    //call our method again, recursive
+                    fetchAll(data.next, planets).then(resolve);
+
+                } else { //otherwise resolve (no more next)
+
+                    let arr = planets.map(function (item) {
+                        return {name: item.name, films: item.films};
+                    })
+
+                    //return back all the data
+                    resolve(arr);
+                }
             })
     });
 }
