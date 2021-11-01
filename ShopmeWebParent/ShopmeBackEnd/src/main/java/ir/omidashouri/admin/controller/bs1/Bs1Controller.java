@@ -14,14 +14,14 @@ public class Bs1Controller {
         return "bs1/index";
     }
 
-/*
+
     //    http://localhost:8080/ShopmeAdmin/bs1/2
     @GetMapping("/2")
     public String ajax2Page() {
         return "bs1/bs1_2";
     }
 
-
+/*
     //    http://localhost:8080/ShopmeAdmin/bs1/3
     @GetMapping("/3")
     public String ajax3Page() {
