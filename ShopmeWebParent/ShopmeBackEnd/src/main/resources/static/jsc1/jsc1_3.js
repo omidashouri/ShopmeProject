@@ -21,6 +21,10 @@ function fetchAll(urlServ, planets) {
         return fetch(urlServ)
             //change data type to json
             .then(function (resp) {
+                //if cannot connect to the server then the throw message is received in catch
+                if (resp.status !== 200) {
+                    throw "could not connect to the server";
+                }
                 return resp.json()
             })
             //separate name and films from json and ...
@@ -46,6 +50,8 @@ function fetchAll(urlServ, planets) {
                     //return back all the data
                     resolve(arr);
                 }
+            }).catch(function (error) {
+                console.error(error);
             })
     });
 }
@@ -56,20 +62,30 @@ document.body.appendChild(output);
 
 //use this method to handle custom
 function outputPlanets(data) {
+    //show the list count on created div(output)
+    output.innerHTML = `<h1>${data.length} results found.</h1>`;
     data.forEach(function (item) {
         console.log('output >>', item);
         //div which text is item name
         const div = document.createElement("div");
         div.textContent = item.name;
-        //unordered list which text is movie name
-        const ul = document.createElement("ul");
-        for (let x = 0; x < item.films.length; x++) {
-            let li = document.createElement("li");
-            li.textContent = item.films[x];
-            ul.appendChild(li);
+
+        if (item.films.length) {
+            //unordered list which text is movie name
+            const ul = document.createElement("ul");
+            for (let x = 0; x < item.films.length; x++) {
+                let li = document.createElement("li");
+                li.textContent = item.films[x];
+                ul.appendChild(li);
+            }
+            //add unordered list to div
+            div.appendChild(ul);
+
+        } else {
+            let span = document.createElement("span");
+            span.textContent = `${item.films.length} films found.`;
+            div.appendChild(span);
         }
-        //add unordered list to div
-        div.appendChild(ul);
         //add div to the main div of page
         output.appendChild(div)
     })
@@ -82,8 +98,7 @@ function fetchData(url) {
         return rep.json()
 
     }).then(function (data) {
-        //show the list count on created div(output)
-        output.textContent = `${data.count} results found.`;
+
         //check if data.next has value
         if (data.next) {
             //create next button
