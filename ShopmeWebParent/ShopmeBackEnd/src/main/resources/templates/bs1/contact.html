@@ -64,7 +64,7 @@
                 <!-- form becomes a row,  g: gutter-->
                 <!--               add data-netlify="true" if using the site in https://www.netlify.com/ site-->
                 <!--               add data-netlify-honeypot="true" if using the site in https://www.netlify.com/ site-->
-                <form action="/contact-success.html" class="row g-3" method="POST" name="contact">
+                <form class="row g-3" method="POST" name="contact" th:action="@{/bs1/contact-success}" th:object="${contact}">
 
                     <!-- for the bots (spam prevention) if using the site in https://www.netlify.com/ site -->
                     <!-- <input type="hidden" name="bot-filed">-->
@@ -73,20 +73,20 @@
                     <div class="col-12 col-lg-6">
                         <!-- id and for must be matched-->
                         <label class="form-label" for="firstName">First Name</label>
-                        <input class="form-control" id="firstName" name="first-name" type="text">
+                        <input class="form-control" id="firstName" name="first-name" th:field="*{firstName}" type="text">
                     </div>
                     <div class="col-12 col-lg-6">
                         <label class="form-label" for="lastName">Last Name</label>
-                        <input class="form-control" id="lastName" name="last-name" type="text">
+                        <input class="form-control" id="lastName" name="last-name" th:field="*{lastName}" type="text">
                     </div>
                     <div class="col-12">
                         <label class="form-label" for="email">Email Address</label>
-                        <input class="form-control" id="email" name="email" type="email">
+                        <input class="form-control" id="email" name="email" th:field="*{email}" type="email">
                     </div>
                     <div class="col-12">
                         <label class="form-label" for="comments">Comments</label>
                         <!-- attention: no space before closing </textarea>-->
-                        <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+                        <textarea class="form-control" id="comments" name="comments" rows="3" th:field="*{comments}"></textarea>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Submit</button>
