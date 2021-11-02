@@ -16,9 +16,9 @@ public class Bs1Controller {
 
 
     //    http://localhost:8080/ShopmeAdmin/bs1/2
-    @GetMapping("/2")
+    @GetMapping("/about")
     public String ajax2Page() {
-        return "bs1/bs1_2";
+        return "bs1/about";
     }
 
 /*
