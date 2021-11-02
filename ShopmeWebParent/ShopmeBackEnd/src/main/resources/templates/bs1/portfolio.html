@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <meta name="csrf-token" th:content="${_csrf.token}"/>
-    <title>bs1.1</title>
+    <title>Portfolio | HLW</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.2/css/bootstrap.min.css}" type="text/css"/>
     <!--  put other css files after bootstrap css-->
@@ -35,10 +35,11 @@
                 <!--                ms:m for margin and  s for start in left for written english design and auto for middle-->
                 <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item">
+                        <!--                        active: make world about bold-->
                         <a class="nav-link" th:href="@{/bs1/about}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/bs1/portfolio}">Portfolio</a>
+                        <a class="nav-link active" th:href="@{/bs1/portfolio}">Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -49,36 +50,52 @@
     </nav>
 </div>
 <main>
-    <!-- OR use this kind of styling and define it in header -->
-    <!--<style th:inline="text">
-           header{
-               background-image: url([[@{/bs1/images/index-image.jpg}]]);
-           }
-       </style>-->
-    <header th:style="'background-image: url('+@{/bs1/images/index-image.jpg}+');'">
-        <!--        d-flex enable the flex in div and 'justify-content-center' 'align-items-center' are for flex-->
-        <div class="color-overlay d-flex justify-content-center align-items-center">
-            <h1>Hello, world!</h1>
-        </div>
-    </header>
-    <!--    mx: margin from x which is 0.0 for left and right is auto (middle of page) -->
-    <!--    mx: margin for y which is for top and bottom and has number from 0 to 5 which 5 is the most distance  -->
-    <div class="singleCol mx-auto my-2">
-        <div class="container">
-            <!--    text-lg-start: if add to this style when page is large the text is placed at the  left of picture   -->
-            <h2 class="text-center ">I'll design your page wonder fully</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, corporis dolor,
-                dolorem ex fugit laboriosam maiores molestias nobis omnis optio perspiciatis, placeat quidem quisquam
-                veniam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
+    <!--    my: margin for top to button, py: padding for medium-->
+    <div class="container my-2 py-md-4">
+        <h1>My Portfolio</h1>
+        <!--        each row are 12 column, col-12 equal to 100% or full page or all the column-->
+        <!--        col-md-6 and 6*2=12 mean in middle size screen i want two column for 100% or full page and the third column go bellow them-->
+        <!--        col-md-4 and 4*3=12 mean in large size screen i want three column for 100% or full page -->
+        <!--        mt: margin top 1-->
+        <!--        g: gutter, space between columns, g-2:for mobile size is 2, g-md-3: space for middle is 3-->
+        <div class="row mt-1 g-2 g-md-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img alt="Server Room" class="card-img-top" height="350px"
+                         th:src="@{/bs1/images/server-room-smaller.jpg}"/>
+                    <div class="card-body">
+                        <!--                        h5 is recommended by bootstrap-->
+                        <h5 class="card-title">Server Room</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolor
+                            explicabo fugit ipsum iste nobis perferendis placeat, ratione totam voluptates!</p>
+                        <a class="btn btn-outline-dark" href="#">Learn More!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img alt="Developer Room" class="card-img-top" height="350px"
+                         th:src="@{/bs1/images/developer-area-smaller.jpg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Developer Area</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolor
+                            explicabo fugit ipsum iste nobis perferendis placeat, ratione totam voluptates!</p>
+                        <a class="btn btn-outline-dark" href="#">Learn More!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img alt="Linux Room" class="card-img-top" height="350px"
+                         th:src="@{/bs1/images/linux-room-smaller.jpg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Linux Room</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolor
+                            explicabo fugit ipsum iste nobis perferendis placeat, ratione totam voluptates!</p>
+                        <a class="btn btn-outline-dark" href="#">Learn More!</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

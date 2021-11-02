@@ -10,25 +10,25 @@ public class Bs1Controller {
 
     //    http://localhost:8080/ShopmeAdmin/bs1/
     @GetMapping("/")
-    public String ajax1Page() {
+    public String bootStrapIndexPage() {
         return "bs1/index";
     }
 
 
     //    http://localhost:8080/ShopmeAdmin/bs1/2
     @GetMapping("/about")
-    public String ajax2Page() {
+    public String bootStrapAboutPage() {
         return "bs1/about";
     }
 
-/*
+
     //    http://localhost:8080/ShopmeAdmin/bs1/3
-    @GetMapping("/3")
-    public String ajax3Page() {
-        return "bs1/bs1_3";
+    @GetMapping("/portfolio")
+    public String bootStrapPortfolioPage() {
+        return "bs1/portfolio";
     }
 
-
+/*
      //    http://localhost:8080/ShopmeAdmin/bs1/4
     @GetMapping("/4")
     public String ajax4Page() {
