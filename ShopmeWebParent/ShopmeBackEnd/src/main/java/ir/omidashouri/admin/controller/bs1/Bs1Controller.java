@@ -22,20 +22,21 @@ public class Bs1Controller {
     }
 
 
-    //    http://localhost:8080/ShopmeAdmin/bs1/3
+    //    http://localhost:8080/ShopmeAdmin/bs1/portfolio
     @GetMapping("/portfolio")
     public String bootStrapPortfolioPage() {
         return "bs1/portfolio";
     }
 
-/*
-     //    http://localhost:8080/ShopmeAdmin/bs1/4
-    @GetMapping("/4")
-    public String ajax4Page() {
-        return "bs1/bs1_4";
+
+    //    http://localhost:8080/ShopmeAdmin/bs1/contact
+    @GetMapping("/contact")
+    public String bootstrapContactPage() {
+        return "bs1/contact";
     }
 
 
+/*
     //    http://localhost:8080/ShopmeAdmin/bs1/5
     @GetMapping("/5")
     public String ajax5Page() {

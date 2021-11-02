@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <meta name="csrf-token" th:content="${_csrf.token}"/>
-    <title>bs1.1</title>
+    <title>Submission Successful | Omid Ashouri</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.2/css/bootstrap.min.css}" type="text/css"/>
     <!--  put other css files after bootstrap css-->
@@ -15,7 +15,6 @@
 
 </head>
 <body>
-<!--p: padding to zero-->
 <div class="container px-0">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -36,13 +35,14 @@
                 <!--                ms:m for margin and  s for start in left for written english design and auto for middle-->
                 <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item">
+                        <!--                        active: make world about bold-->
                         <a class="nav-link" th:href="@{/bs1/about}">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/bs1/portfolio}">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/bs1/contact}">Contact</a>
+                        <a class="nav-link active" th:href="@{/bs1/contact}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -50,36 +50,19 @@
     </nav>
 </div>
 <main>
-    <!-- OR use this kind of styling and define it in header -->
-    <!--<style th:inline="text">
-           header{
-               background-image: url([[@{/bs1/images/index-image.jpg}]]);
-           }
-       </style>-->
-    <header th:style="'background-image: url('+@{/bs1/images/index-image.jpg}+');'">
-        <!--        d-flex enable the flex in div and 'justify-content-center' 'align-items-center' are for flex-->
-        <div class="color-overlay d-flex justify-content-center align-items-center">
-            <h1>Omid Ashouri</h1>
-        </div>
-    </header>
-    <!--    mx: margin from x which is 0.0 for left and right is auto (middle of page) -->
-    <!--    mx: margin for y which is for top and bottom and has number from 0 to 5 which 5 is the most distance  -->
-    <div class="singleCol mx-auto my-2">
-        <div class="container">
-            <!--    text-lg-start: if add to this style when page is large the text is placed at the  left of picture   -->
-            <h2 class="text-center ">I'll design your page wonder fully</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, corporis dolor,
-                dolorem ex fugit laboriosam maiores molestias nobis omnis optio perspiciatis, placeat quidem quisquam
-                veniam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum esse, eveniet maxime mollitia odio
-                officiis quo ut. Consectetur eligendi error odio omnis, sequi voluptates. A eligendi et maxime totam
-                voluptatum!</p>
+    <!--    my: margin for top to button, py: padding for medium-->
+    <div class="container my-2">
+        <h1>Submission Successful</h1>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem, consequuntur corporis culpa
+                    dolore eius laboriosam maxime minus odio possimus recusandae repellendus soluta vitae voluptas?</p>
+                <p>Phone: (98) 912 660 7350</p>
+                <p>Email: <a href="mailto:omidashouri@gmail.com">omidashouri@gmail.com</a></p>
+            </div>
+            <div class="col-md-6">
+                <p>thank you for your submission.</p>
+            </div>
         </div>
     </div>
 </main>

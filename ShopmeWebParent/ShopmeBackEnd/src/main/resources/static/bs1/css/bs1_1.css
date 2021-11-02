@@ -1,3 +1,27 @@
+/*procedure to make footer stick to button page: 1 to 4 */
+
+/*1-dedicate the height to 100% */
+html, body {
+    height: 100%;
+}
+
+/*2-make the body flex*/
+/*turn the children of body (divs,mains,footers) in to columns*/
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/*3-turn main to flex, HEADER=1 MAIN=0 (mean 100%) FOOTER=auto*/
+main {
+    flex: 1 0 auto;
+}
+
+/*4-stick the footer to the bottom of page*/
+footer {
+    flex-shrink: 0;
+}
+
 header {
     background: no-repeat center center;
     background-size: cover;
