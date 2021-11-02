@@ -1,0 +1,40 @@
+header {
+    background: no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.color-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    min-height: 60vh;
+}
+
+.singleCol {
+    max-width: 750px;
+}
+
+/*style for tag footer*/
+footer {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+/*change the link color in footer, the default in bootstrap is blue*/
+footer a {
+    color: white;
+}
+
+/*change the link color in footer, when mouse is over the icon*/
+footer a:hover {
+    color: #dfdfdf;
+}
+
+/*  when the width of picture is less than 767 pixel (for mobile)
+    then set the vertical high 30 pixel
+*/
+@media (max-width: 767.98px) {
+    .color-overlay {
+        min-height: 30vh;
+    }
+
+}
