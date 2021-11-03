@@ -1,21 +1,48 @@
+$(document).ready(function () {
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 let url = "https://api.imi.ir/edu-imi-ws/api/users/login";
 let customPost = {
-    username: "9057",
-    password: "1619993814",
+    username: 9057,
+    password: 1,
     role: "anonymous"
 }
 
 let customHeader = {
-    "Content-Type": "application/json; charset=utf-8"
+    "Content-Type": "application/json",
+    "Accept":"application/json",
+    "Access-Control-Expose-Headers":"Authorization, Origin, Content-Type, Accept, X-Auth-Token",
+    "access-control-allow-credentials": "true",
+    "access-control-allow-origin":"http://localhost:8080"
 }
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    // headers.append('Host', 'api.imi.ir');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:8080');
+    headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authentication');
+    headers.append('Access-Control-Allow-Methods', 'POST, OPTIONS, FETCH');
+
 
 fetch(url, {
     method: "POST",
-    headers: customHeader,
-    body: JSON.stringify(customPost)
+    headers: headers,
+    // host:'api.imi.ir',
+    // mode: 'no-cors',
+    // credentials: 'same-origin,include',
+    credentials: 'include',
+    // body: JSON.stringify(customPost)
+    body: JSON.stringify({username: 9057, password:1619993814,role: 'anonymous'})
 })
+    .then(
+        function(resp) {
+        console.log(resp.status);
+        console.log(resp.statusCode);
+        console.log(JSON.stringify(resp.headers));
+       resp.headers.forEach(function(val, key) {
+            console.log(key + ' -> ' + val);});
+        console.log(resp.headers.get("authorization"));
 
-    .then(() => console.log("salammmmmmmmmm"))
+    }).then(() => console.log("salammmmmmmmmm"))
     /*    .then(responseOne => responseOne.json())
         // .then(responseTwo => console.log(responseTwo))
         .then(function (responseTwo) {
@@ -39,3 +66,5 @@ fetch(url, {
             document.getElementById('user').appendChild(li);
         })*/
     .catch(error => console.log('oops there is an erro', error));
+
+});
