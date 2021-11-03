@@ -1,5 +1,7 @@
 $(document).ready(function () {
+
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+    // https://sebtrif.xyz/blog/2019-10-03-client-side-ssl-in-node-js-with-fetch/
 let url = "https://api.imi.ir/edu-imi-ws/api/users/login";
 let customPost = {
     username: 9057,
@@ -30,6 +32,7 @@ fetch(url, {
     // mode: 'no-cors',
     // credentials: 'same-origin,include',
     credentials: 'include',
+    agent: httpsAgent,
     // body: JSON.stringify(customPost)
     body: JSON.stringify({username: 9057, password:1619993814,role: 'anonymous'})
 })
