@@ -1,6 +1,5 @@
-package ir.omidashouri.admin.repository.user;
+package ir.omidashouri.admin.repository;
 
-import ir.omidashouri.admin.repository.UserRepository;
 import ir.omidashouri.common.entity.RoleEntity;
 import ir.omidashouri.common.entity.UserEntity;
 import org.junit.jupiter.api.Test;
@@ -82,4 +81,11 @@ class UserRepositoryTest {
         assertThat(countById).isNotNull().isGreaterThan(0);
     }
 
+    @Test
+    void updateEnableStatus() {
+        Integer id=1;
+        userRepository.updateEnableStatus(id, true);
+
+        assertThat(userRepository.findUserEntityById(id).isEnabled()).isTrue();
+    }
 }

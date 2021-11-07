@@ -99,8 +99,10 @@
                 <td th:text="${user.lastName}">"last name"</td>
                 <td th:text="${user.roles}">"roles"</td>
                 <td>
-                    <a class="fas fa-check-circle fa-2x icon-green" th:if="${user.isEnabled() == true}"></a>
-                    <a class="fas fa-check-circle fa-2x icon-dark" href="" th:if="${user.isEnabled() == false}"></a>
+                    <a class="fas fa-check-circle fa-2x icon-green" th:href="@{'/users/'+${user.id}+'/enabled/false'}"
+                       th:if="${user.isEnabled() == true}" title="enable this user"></a>
+                    <a class="fas fa-check-circle fa-2x icon-dark" th:href="@{'/users/'+${user.id}+'/enabled/true'}"
+                       th:if="${user.isEnabled() == false}" title="disable this user"></a>
                 </td>
                 <!-- fa=fontawesome , fa-edit=fontawesome edit button, fa-2x=size -->
                 <td>

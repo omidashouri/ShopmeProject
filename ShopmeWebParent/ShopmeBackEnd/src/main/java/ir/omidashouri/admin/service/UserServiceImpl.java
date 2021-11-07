@@ -8,9 +8,11 @@ import ir.omidashouri.common.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -83,6 +85,11 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("could not find user with ID " + id);
         }
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateEnableStatus(Integer userId, boolean enabled) {
+        userRepository.updateEnableStatus(userId, enabled);
     }
 
     private void encodePassword(UserEntity user) {

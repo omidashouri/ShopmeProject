@@ -33,7 +33,7 @@ public class UserController {
     @GetMapping("/users/new")
     public String createNewUser(Model model) {
         List<RoleEntity> listRoles = userService.listRoles();
-        model.addAttribute("listRoles",listRoles);
+        model.addAttribute("listRoles", listRoles);
 
         UserEntity user = new UserEntity();
         user.setEnabled(true);
@@ -80,4 +80,16 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @GetMapping("/users/{userId}/enabled/{userStatus}")
+    public String testUpdateUserStatus(@PathVariable("userId") Integer userId,
+                                       @PathVariable("userStatus") boolean userStatus,
+                                       RedirectAttributes redirectAttributes) {
+
+        userService.updateEnableStatus(userId, userStatus);
+        String status = userStatus ? "enabled" : "disabled";
+        String message = "The user ID " + userId + " has been " + status;
+        redirectAttributes.addFlashAttribute("message",message);
+
+        return "redirect:/users";
+    }
 }

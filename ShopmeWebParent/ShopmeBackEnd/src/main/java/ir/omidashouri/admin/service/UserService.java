@@ -20,4 +20,6 @@ public interface UserService {
     boolean isEmailUnique(Integer id, String email);
 
     void delete(Integer id) throws UserNotFoundException;
+
+    void updateEnableStatus(Integer userId,boolean enabled);
 }
