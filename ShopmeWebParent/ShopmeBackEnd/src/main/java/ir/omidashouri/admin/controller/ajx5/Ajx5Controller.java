@@ -14,14 +14,14 @@ public class Ajx5Controller {
         return "ajx5/ajx5_1";
     }
 
-/*
+
     //    http://localhost:8080/ShopmeAdmin/ajx5/2
     @GetMapping("/2")
     public String ajax2Page() {
         return "ajx5/ajx5_2";
     }
 
-
+/*
     //    http://localhost:8080/ShopmeAdmin/ajx5/3
     @GetMapping("/3")
     public String ajax3Page() {
