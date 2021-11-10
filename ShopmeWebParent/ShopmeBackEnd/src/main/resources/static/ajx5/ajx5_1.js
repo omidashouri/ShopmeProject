@@ -2,8 +2,7 @@ $(document).ready(function () {
 
 
     //https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
-// let url = "https://api.imi.ir/edu-imi-ws/api/users/login";
-    let url = "https://ashouri-pc:8443/edu-imi-ws/api/users/login";
+let url = "https://api.imi.ir/edu-imi-ws/api/users/login";
     let customPost = {
         username: 9057,
         password: 1,
@@ -20,8 +19,9 @@ $(document).ready(function () {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authentication');
-    headers.append('Access-Control-Allow-Methods', 'POST, OPTIONS, FETCH');
+    headers.append('Access-Control-Allow-Headers', '*');
+    headers.append('Access-Control-Expose-Headers', '*');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:8083/');
 
 
     let myauthorization;
@@ -30,20 +30,20 @@ $(document).ready(function () {
     const resultPromise =
         fetch(url, {
             method: "POST",
-            // headers: headers,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Headers': '*',
-                'access-control-expose-headers': '*',
-                'Access-Control-Allow-Origin': 'http://localhost:8083/'
-            },
-            host: 'https://ashouri-pc:8443/',
+            headers: headers,
+            /*            headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Access-Control-Allow-Headers': '*',
+                            'access-control-expose-headers': '*',
+                            'Access-Control-Allow-Origin': ''
+                        },*/
+            host: 'https://api.imi.ir/',
             Origin: 'http://localhost:8083/',
             mode: 'cors',
             credentials: 'same-origin',
             referrerPolicy: 'no-referrer',
-            body: JSON.stringify({username: 9057, password: 888, role: 'anonymous'})
+            body: JSON.stringify({username: 9057, password: 1, role: 'anonymous'})
         })
             .then(
                 function (resp) {
@@ -57,7 +57,7 @@ $(document).ready(function () {
                     console.log('MyAuthorization' + myauthorization);
 
 
-                    urlInner = 'https://ashouri-pc:8443/edu-imi-ws/api/v1/users/nationalCode/0075175266';
+                    urlInner = 'https://api.imi.ir/edu-imi-ws/api/v1/users/nationalCode/0075175266';
                     return fetch(urlInner, {
                         method: "GET",
                         headers: {
