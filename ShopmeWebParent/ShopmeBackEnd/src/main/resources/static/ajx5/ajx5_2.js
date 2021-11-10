@@ -1,19 +1,37 @@
 $(document).ready(function () {
     const urlMessage = 'ajx5_2_message.txt';
+    let userName;
+    let userEmail;
+    let userInfo;
 
 
-    const readMessage = fetch(urlMessage)
-        .then((response) => {
-            return response.json();
-        }).then(data => {
-            console.log(data);
-            console.log(data.username);
-            return data;
-        }).catch(error => console.log(error));
+    function getUserInfo() {
+        return fetch(urlMessage)
+            .then((response) => response.json())
+            .then(data => {
+                console.log(data);
+                console.log(data.username);
+                return data;
+            })
+            .catch(error => console.log(error));
+    }
 
-    console.log(readMessage.then(s => {
-        return JSON.stringify(s.username)
-    }));
+
+    async function asyncCall() {
+        console.log('asyncCall');
+        userInfo = await getUserInfo();
+        console.log(`userInfo: ${userInfo}`);
+
+        userName = `${userInfo.username}`
+        console.log(`username: ${userName}`);
+        /*        const userName = await getUserInfo().then(e=>e.username);
+                console.log(`userName: ${userName}`);*/
+    }
+
+    asyncCall();
+
+
+    //------------------------------------------------
 
     /*
         //https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
