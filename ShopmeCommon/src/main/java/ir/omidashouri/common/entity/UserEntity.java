@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "tbl_users",schema = "shopme_sc")
+@Table(name = "tbl_users", schema = "shopme_sc")
 public class UserEntity {
 
     @Id
@@ -36,7 +36,7 @@ public class UserEntity {
     @Column(name = "enabled", length = 40)
     private boolean enabled;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -51,7 +51,15 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
-    public void addRole(RoleEntity role){
+    public void addRole(RoleEntity role) {
         this.roles.add(role);
+    }
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (id == null || photos == null)
+            return "/images/default-user.png";
+
+        return "/user-photos/" + this.id + "/" + this.photos;
     }
 }

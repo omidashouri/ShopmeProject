@@ -1,17 +1,22 @@
 package ir.omidashouri.admin.controller;
 
 import ir.omidashouri.admin.exception.UserNotFoundException;
+import ir.omidashouri.admin.service.FileUploadUtil;
 import ir.omidashouri.admin.service.UserService;
 import ir.omidashouri.common.entity.RoleEntity;
 import ir.omidashouri.common.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -43,8 +48,26 @@ public class UserController {
     }
 
     @PostMapping("/users/save")
-    public String saveUser(UserEntity user, RedirectAttributes redirectAttributes) {
-        UserEntity savedUser = userService.save(user);
+    public String saveUser(UserEntity user, RedirectAttributes redirectAttributes,
+                           @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+        UserEntity savedUser;
+        if (!multipartFile.isEmpty()) {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            user.setPhotos(fileName);
+            savedUser = userService.save(user);
+            String uploadDir = "user-photos/" + savedUser.getId();
+
+//            clean directory before save file
+            FileUploadUtil.cleanDir(uploadDir);
+
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        } else {
+//            in edit mode if the user do not have photo from previous then set its photo to null
+            if (user.getPhotos().isEmpty())
+                user.setPhotos(null);
+            savedUser = userService.save(user);
+        }
         System.out.println(savedUser);
         redirectAttributes.addFlashAttribute("message", "The user has been saved successfully.");
         return "redirect:/users";
@@ -88,7 +111,7 @@ public class UserController {
         userService.updateEnableStatus(userId, userStatus);
         String status = userStatus ? "enabled" : "disabled";
         String message = "The user ID " + userId + " has been " + status;
-        redirectAttributes.addFlashAttribute("message",message);
+        redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/users";
     }
