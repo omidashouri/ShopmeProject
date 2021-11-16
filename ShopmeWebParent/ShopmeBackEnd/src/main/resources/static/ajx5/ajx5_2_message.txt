@@ -1,7 +1,8 @@
 {"username":"9057",
-"password":"1619993814",
-"apiLoginUrl":"https://ashouri-pc:8443/edu-imi-ws/api/users/login",
-"host":"https://ashouri-pc:8443",
-"origin":"http://localhost:8083",
-"requestUrl1":"https://ashouri-pc:8443/edu-imi-ws/api/v1/users/nationalCode/0075175266"
+"password":"111111",
+"role":"anonymous",
+"apiLoginUrl":"https://api.imi.ir/edu-imi-ws/api/users/login",
+"host":"https://api.imi.ir",
+"origin":"http://localhost:8080",
+"requestUrl1":"https://api.imi.ir/edu-imi-ws/api/v1/users/nationalCode/0075175266"
 }
