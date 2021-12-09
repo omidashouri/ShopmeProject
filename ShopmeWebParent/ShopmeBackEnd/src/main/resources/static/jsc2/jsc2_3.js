@@ -20,9 +20,22 @@ btn.addEventListener('click', (e) => {
         .then((res) => res.json())
         .then((data) => {
             // console.log(data);
-            output.innerHTML = JSON.stringify(data);
+            // output.innerHTML = JSON.stringify(data);
+            maker(data.places);
         })
         .catch((err) => {
             console.log(err);
         })
 })
+
+function maker(data) {
+    data.forEach(element => {
+        console.log(element);
+        const title = document.createElement('div');
+        // title.textContent = element.title;
+        //add style to the defined tag
+        title.classList.add('box');
+        title.innerHTML = `<div>Title: ${element.title}<br />${element.urlhtml}</div>`;
+        output.append(title);
+    });
+}
