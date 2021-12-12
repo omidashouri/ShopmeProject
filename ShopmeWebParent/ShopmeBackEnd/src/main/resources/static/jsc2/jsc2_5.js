@@ -20,14 +20,15 @@ btn.addEventListener('click', (e) => {
 })
 
 function adder(url) {
-    console.log(url)
+    // console.log(url)
     fetch(url)
         .then(rep => rep.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             output.innerHTML = `<h3>Seed : ${data.info.seed}
             <br\>Results: ${data.info.results}</h3>`;
             maker(data.results);
+            // makerArr(data.results);
         })
         .catch(e => console.log(e))
 }
@@ -64,4 +65,20 @@ function eleMaker(eleTag, parent, contents) {
     parent.append(elem);
     elem.innerHTML = contents;
     return elem;
+}
+
+
+//for self study
+let fullName = '';
+
+function makerArr(data) {
+    console.log(data);
+    data.forEach(el => {
+        console.log(Object.entries(el.name))
+        for ([k, v] of Object.entries(el.name)) {
+            fullName += ` ${v}`;
+        }
+        console.log(fullName)
+        fullName = '';
+    })
 }
