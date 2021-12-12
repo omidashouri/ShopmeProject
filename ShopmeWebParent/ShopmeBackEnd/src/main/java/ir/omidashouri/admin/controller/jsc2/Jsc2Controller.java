@@ -35,14 +35,14 @@ public class Jsc2Controller {
         return "jsc2/jsc2_4";
     }
 
-/*
+
     //    http://localhost:8080/ShopmeAdmin/jsc2/5
     @GetMapping("/5")
     public String ajax5Page() {
         return "jsc2/jsc2_5";
     }
 
-
+/*
     //    http://localhost:8080/ShopmeAdmin/jsc2/6
     @GetMapping("/6")
     public String ajax6Page() {
