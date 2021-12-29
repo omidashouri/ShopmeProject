@@ -42,14 +42,15 @@ public class Jsc2Controller {
         return "jsc2/jsc2_5";
     }
 
-/*
+
+    //    to_do_list
     //    http://localhost:8080/ShopmeAdmin/jsc2/6
     @GetMapping("/6")
     public String ajax6Page() {
-        return "jsc2/jsc2_6";
+        return "jsc2/jsc2_6_todo_list";
     }
 
-
+/*
      //    http://localhost:8080/ShopmeAdmin/jsc2/7
     @GetMapping("/7")
     public String ajax7Page() {
